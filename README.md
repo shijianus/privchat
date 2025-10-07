@@ -1,7 +1,5 @@
 # PrivChat - 基于 Matrix Synapse 的私有聊天服务器
 
-**二创作者**: shijian
-
 ## 1. 项目概述
 
 PrivChat 是一个基于 `Matrix <https://matrix.org>`__ 开放标准实现的私有聊天服务器。它利用 `Element Synapse` 作为核心后端，为您提供一个安全、去中心化且可互操作的实时通信平台。您可以完全掌控自己的聊天数据，并选择与其他 Matrix 服务器进行联邦通信。
