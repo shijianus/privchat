@@ -52,6 +52,7 @@ ignore = [
     "E501",
     "E731",
 ]
+exclude = ["PrivChat/bin/"] # Ignore third-party scripts in the virtual environment
 select = [
     # pycodestyle
     "E",
