@@ -1,0 +1,115 @@
+Metadata-Version: 2.4
+Name: treq
+Version: 25.5.0
+Summary: High-level Twisted HTTP Client API
+Project-URL: Changelog, https://github.com/twisted/treq/blob/HEAD/CHANGELOG.rst
+Project-URL: Documentation, https://treq.readthedocs.io/
+Project-URL: Issues, https://github.com/twisted/treq/issues
+Project-URL: Source, https://github.com/twisted/treq
+Project-URL: Funding-PSF, https://psfmember.org/civicrm/contribute/transact/?reset=1&id=44
+Project-URL: Funding-GitHub, https://github.com/sponsors/twisted
+Author-email: David Reid <dreid@dreid.org>
+Maintainer-email: Tom Most <twm@freecog.net>
+License-Expression: MIT
+License-File: LICENSE
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Twisted
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.8.0
+Requires-Dist: attrs
+Requires-Dist: hyperlink>=21.0.0
+Requires-Dist: incremental>=24.7.2
+Requires-Dist: multipart
+Requires-Dist: requests>=2.1.0
+Requires-Dist: twisted[tls]>=22.10.0
+Requires-Dist: typing-extensions>=3.10.0
+Provides-Extra: dev
+Requires-Dist: httpbin==0.7.0; extra == 'dev'
+Requires-Dist: pep8; extra == 'dev'
+Requires-Dist: pyflakes; extra == 'dev'
+Requires-Dist: werkzeug==2.0.3; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme; extra == 'docs'
+Description-Content-Type: text/x-rst
+
+treq: High-level Twisted HTTP Client API
+========================================
+
+.. |pypi| image:: https://img.shields.io/pypi/v/treq.svg
+    :alt: PyPI
+    :target: https://pypi.org/project/treq/
+
+.. |calver| image:: https://img.shields.io/badge/calver-YY.MM.MICRO-22bfda.svg
+    :alt: calver: YY.MM.MICRO
+    :target: https://calver.org/
+
+.. |coverage| image:: https://coveralls.io/repos/github/twisted/treq/badge.svg
+    :alt: Coverage
+    :target: https://coveralls.io/github/twisted/treq
+
+.. |documentation| image:: https://readthedocs.org/projects/treq/badge/
+    :alt: Documentation
+    :target: https://treq.readthedocs.org
+
+|pypi|
+|calver|
+|coverage|
+|documentation|
+
+``treq`` is an HTTP library inspired by
+`requests <https://requests.readthedocs.io/>`_ but written on top of
+`Twisted <https://twisted.org/>`_'s
+`Agents <https://docs.twisted.org/en/stable/api/twisted.web.client.Agent.html>`_.
+
+It provides a simple, higher level API for making HTTP requests when
+using Twisted.
+
+.. code-block:: python
+
+    >>> import treq
+
+    >>> async def main(reactor):
+    ...     response = await treq.get("https://github.com")
+    ...     print(response.code)
+    ...     body = await response.text()
+    ...     print("<!DOCTYPE html>" in body)
+
+    >>> from twisted.internet.task import react
+    >>> react(main)
+    200
+    True
+
+For more info `read the docs <https://treq.readthedocs.org>`_.
+
+Contributing
+------------
+
+``treq`` development is hosted on `GitHub <https://github.com/twisted/treq>`_.
+
+We welcome contributions: feel free to fork and send contributions over.
+See `CONTRIBUTING.rst <https://github.com/twisted/treq/blob/master/CONTRIBUTING.rst>`_ for more info.
+
+Code of Conduct
+---------------
+
+Refer to the `Twisted code of conduct <https://github.com/twisted/twisted/blob/trunk/code_of_conduct.md>`_.
+
+Copyright and License
+---------------------
+
+``treq`` is made available under the MIT license.
+See `LICENSE <./LICENSE>`_ for legal details and copyright notices.
+
+

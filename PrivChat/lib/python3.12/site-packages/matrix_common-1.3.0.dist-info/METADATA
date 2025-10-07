@@ -1,0 +1,107 @@
+Metadata-Version: 2.1
+Name: matrix-common
+Version: 1.3.0
+Summary: Common utilities for Synapse, Sydent and Sygnal
+Home-page: https://github.com/matrix-org/matrix-python-common
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: attrs
+Requires-Dist: importlib-metadata (>=1.4) ; python_version < "3.8"
+Provides-Extra: dev
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: twisted ; extra == 'dev'
+Requires-Dist: aiounittest ; extra == 'dev'
+Requires-Dist: mypy (==0.910) ; extra == 'dev'
+Requires-Dist: black (==22.3.0) ; extra == 'dev'
+Requires-Dist: flake8 (==4.0.1) ; extra == 'dev'
+Requires-Dist: isort (==5.9.3) ; extra == 'dev'
+Requires-Dist: build (==0.8.0) ; extra == 'dev'
+Requires-Dist: twine (==4.0.1) ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: tox ; extra == 'test'
+Requires-Dist: twisted ; extra == 'test'
+Requires-Dist: aiounittest ; extra == 'test'
+
+# matrix-python-common
+
+Common utilities for Synapse, Sydent and Sygnal.
+
+
+## Installation
+
+```shell
+pip install matrix-common
+```
+
+
+## Usage
+```py
+import matrix_common
+```
+
+
+## Development
+
+In a virtual environment with pip ≥ 21.1, run
+```shell
+pip install -e .[dev]
+```
+
+To run the unit tests, you can either use:
+```shell
+tox -e py
+```
+or
+```shell
+trial tests
+```
+
+To run the linters and `mypy` type checker, use `./scripts-dev/lint.sh`.
+
+
+## Releasing
+
+The exact steps for releasing will vary; but this is an approach taken by the
+Synapse developers (assuming a Unix-like shell):
+
+ 1. Set a shell variable to the version you are releasing (this just makes
+    subsequent steps easier):
+    ```shell
+    version=X.Y.Z
+    ```
+
+ 2. Update `setup.cfg` so that the `version` is correct.
+
+ 3. Stage the changed files and commit.
+    ```shell
+    git add -u
+    git commit -m v$version -n
+    ```
+
+ 4. Push your changes.
+    ```shell
+    git push
+    ```
+
+ 5. When ready, create a signed tag for the release:
+    ```shell
+    git tag -s v$version
+    ```
+    Base the tag message on the changelog.
+
+ 6. Push the tag.
+    ```shell
+    git push origin tag v$version
+    ```
+
+ 7. If applicable:
+    Create a *release*, based on the tag you just pushed, on GitHub or GitLab.
+
+ 8. If applicable:
+    Create a source distribution and upload it to PyPI:
+    ```shell
+    python -m build
+    twine upload dist/matrix_common-$version*
+    ```
